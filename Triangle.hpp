@@ -9,6 +9,7 @@ class Triangle{
   Point p3;
   public:
   int area();
+  Triangle(Point t1, Point t2,Point t3);
   
 
 };
