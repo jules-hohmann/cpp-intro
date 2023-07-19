@@ -1,6 +1,11 @@
 #include <iostream>
 #include <vector> 
 #include <cmath>
+#include <array>
+#include "Point.hpp"
+#include "line.hpp"
+
+
 int add(int x, int y)
 {
   return x + y;
@@ -27,75 +32,8 @@ class circle
         return M_1_PI*Radius*Radius;
       }
   };
-class point
-{
-  public:
-  double x;
-  double y;
 
-  int distance_to_origin()
-  {
-    return hypot(x, y);
-  }
-  
-  int distance_to_point(point a){
-    int dx = a.x -this->x;
-    int dy = a.y - this->y;
-    return hypot(dx, dy);
-  }
 
-};
-
-class line{
-  public:
-  point p1;
-  point p2;
-  int length(){
-    int dx = this->p1.x-this->p2.x;
-    int dy = this->p2.x-this->p2.x;
-    return hypot(dx, dy);
-  }
-  int distance_to_point(point a){
-    int slope = (this->p1.y- this->p2.y )/(this->p1.x-this->p2.x);
-    int b = p1.y-slope*p1.x;
-    int d = abs(slope*a.x-slope*a.y+b)/hypot(slope, b);
-    return d;
-  }
-};
-
-class Triangle{
-  public:
-  point p1;
-  point p2;
-  point p3;
-  int area(){
-    int A = 0.5 * abs(p1.x*(p2.y-p3.y)+p2.x*(p3.y-p1.y)+p3.x*(p1.y-p2.y));
-  }
-
-};
-class Polygon{
-  public:
-  std:: vector<point> vertices;
-  int area = 0;
-  
-  point p1 = vertices[0];
-  int area (){
-    for (int i = 1; i< vertices.size()-1; i++){
-      area += 0.5 * abs(p1.x*(vertices[i].y-vertices[i+1].y)+vertices[i].x*(vertices[i+1].y-p1.y)+vertices[i+1].x*(p1.y-vertices[i].y));
-    }
-    return area;
-  }
-  int perim = 0;
-  int perimeter(){
-    for (int i = 1; i< vertices.size()-1; i++){
-      int dx = vertices[i].x-vertices[i+1].x;
-      int dy = vertices[i].x-vertices[i+1].x;
-      perim +=  hypot(dx, dy);
-    }
-    return perim;
-  }
-
-};
 int main()
 {
   std::cout << "Hello, world!" << std::endl;
